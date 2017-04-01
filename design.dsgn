@@ -1,0 +1,81 @@
+problem space ~ analysis
+solutions space ~ design
+-> split above metioned
+purpose: to prove systematically that the desing fulfills the requirements and the code matches up with the design
+
+artifacts:
+  unit tests
+  controller tests
+  scenario tests
+  business requirement tests
+
+unit tests: (atoms)
+  desing/solution/implementation space
+controller tests: (molecules)
+  between analysis space & desing space
+scenarios tests: +end-to-end tests highly recommended
+  analysis space
+business requirement tests: manual, human sanity check
+
+sunny day
+rainy day
+
+use case
+
+active voice use cases
+passive voice requirements
+
+use case:
+  user-focused BASIC course ('sunny day')
+  number of ALTERNATE courses ('rainy day')
+
+Basic course:
+  What happens? (and then what happens, and then what happens...)
+Alternate courses:
+  what else happens? (and how do we deal with that when it happens)
+  what else happens? (and how do we deal with that when it happens)
+  ...
+
+DDT steps:
+-2) profit: prototype vs long term extendable maintenable portable app
+-1) create requirements
+0) create use case (basic & alternate courses)
+---
+1) Create a robustness diagram (conceptual design) +++for use case
+2) Create the controller test cases from robustness diagram
+3) Add scenarios to each test case
+4) Transform your controller test cases into test classes
+5) Generate the controller test code
+6) Detailed design: create a sequence diagram for the use case
+7) Create unit test cases from yout sequence diagram, and cherry-pick the non-redundant ones
+8) Fill in the test code using generated comments guidance, and write the code to make test pass
+
+scenario:
+  name
+  description
+  input
+  acceptance criteria
+
+requrements:
+  name
+  basic type:
+    internal {internal to UML element}
+    external {independent of any specific UML element}
+  type:
+    functional
+    data
+    performance
+    capacity
+    test
+    display
+    printing
+    report
+    validation
+  [examples]
+
+domain model
+  domain object
+  relation
+    aggregation {is-a, typeof}
+    generalization {has-a, belongs-to}
+  static part of model {use case is dynamic part of model}

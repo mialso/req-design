@@ -1,0 +1,37 @@
+user should be able to 
+  type requirement as a sentence in his text editor
+  mark possible domain object
+  mark true/real/approved domain object
+  watch the requirements document in browser with colored domain object within requirement
+  create a link between requirements, to form a hierarchy, create sub-requirement
+  create a name for requirement
+  click the domain object and see the domain model
+  add comment to requirement
+    [comment creation]
+      user should be able to add links to domain objects and/or another requirements by name
+  add reply to comment, mark comment as completed
+  maintain requirements:
+    create requirements via browser interface
+    update via mouse click and edit mode
+    delete them
+  see requirement details, who created and when, changes history
+  subscribe to requirement changes via email or in-app on-enter messages
+  change his profile, role, name, password
+  mark requirement as read-only for some user groups or roles
+  delegate all his permissions to other user within time period (e.g. vacation)
+
+user should not be able to
+  modify requirement if has no right
+
+administrator should be able to
+  maintain user groups and roles, their names and permissions
+  change user role
+  change role permissions
+
+requirement owner should be able to
+  grant different access permissions to different users, groups, roles
+  grant read-only permissions to guests via direct link(uri)
+
+the app is web based, running in browser on localhost web server
+user should be able to specify convenient port number or default would be chosen
+
