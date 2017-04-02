@@ -72,6 +72,9 @@ requrements:
     report
     validation
   [examples]
+  level:
+    low level {talking about class properties, or UI element, ATOM}
+    high level {talking about classes, UI comonents, MOLECUL}
 
 domain model
   domain object

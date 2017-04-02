@@ -1,11 +1,11 @@
 user should be able to 
-  type requirement as a sentence in his text editor
-  mark possible domain object
-  mark true/real/approved domain object
-  watch the requirements document in browser with colored domain object within requirement
-  create a link between requirements, to form a hierarchy, create sub-requirement
-  create a name for requirement
-  click the domain object and see the domain model
+  type {requirement} as a {sentence} in his <text editor>
+  mark {possible domain object}
+  mark {true/real/approved domain object}
+  watch the {requirements document} in <browser> with {colored domain object} within {requirement}
+  create a {link between requirements}, to form a {hierarchy}, create {sub-requirement}
+  create a {name for requirement}
+  click the {domain object} and see the {domain model}
   add comment to requirement
     [comment creation]
       user should be able to add links to domain objects and/or another requirements by name
@@ -33,5 +33,27 @@ requirement owner should be able to
   grant read-only permissions to guests via direct link(uri)
 
 the app is web based, running in browser on localhost web server
-user should be able to specify convenient port number or default would be chosen
+user should be able to specify convenient port number or default should be chosen
+the app should supply user with ablitity to
+  manage the list of requirement documents
+  view the hierarchy of documents by type and ?name?
+  view comments, opinions, discussion on each item
+  view relations between items
+  navigate between different views and manage & configure them
+  scale the view from atom to molecul and to organizm and back
+  drag and drop items to change relations
+  change item type
+  view changes history, discard changes
+  
+
+it must be possible to the user to
+  view requirements document
+  view domain model document
+  view list of requirement documents
+  view list of domain model documents
+  view combined (all req docs at one) 
+
+it must be possible to the user
+  to indentify itself (log in)
+  to log out or log in as another user
 
