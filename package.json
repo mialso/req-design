@@ -1,0 +1,22 @@
+{
+  "name": "req-design",
+  "version": "0.0.1",
+  "description": "requirements design app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mialso/req-design.git"
+  },
+  "author": "mialso",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mialso/req-design/issues"
+  },
+  "homepage": "https://github.com/mialso/req-design#readme",
+  "dependencies": {
+    "koa": "2.2.0"
+  }
+}

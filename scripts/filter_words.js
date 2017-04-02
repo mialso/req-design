@@ -21,7 +21,7 @@ fs.readdirSync(reqPath)
       .split('\n')
       .forEach((line) => {
          line.split(' ').forEach((word) => {
-           if (-1 !== words.indexOf(word)) {
+           if (-1 !== words.indexOf(word) || 3 > word.length) {
              ++filtered
              return
            }
@@ -30,8 +30,12 @@ fs.readdirSync(reqPath)
       })
   })
 
-console.log('i am node')
-words.forEach((word, index) => {
+const wordsResult = words.map((word) => {
+  if (word.endsWith(',')) return word.slice(0, -1)
+  return word
+})
+
+wordsResult.forEach((word, index) => {
   console.log(`${index}: ${word}`)
 })
 console.log(`filtered: ${filtered}`)
