@@ -8,7 +8,7 @@ const
   PORT = 5999
 
 const html = new Resource('public/index.html', '<div>no data availablet</div>')
-const js = new Resource('public/js/app.js')
+const js = new Resource('public/app.js')
 
 const reqList = fs.readdirSync(path.resolve('design/requirements/'))
 console.log(`reqList: ${reqList}`)
@@ -32,13 +32,35 @@ function handleAPIRequest (route, res) {
   }
 }
 
+function handleRequirement (route, res) {
+  const filePath = path.resolve('design/requirements', route[1])
+  fs.stat(filePath, function (err, stat) {
+    if (err) {
+      console.log('[ERROR]: '+err.toString())
+      res.writeHead(500, {'Content-Type': 'text/html'})
+      res.end(err)
+    } else {
+      res.writeHead(
+        200, 
+        {
+          'Content-Type': 'application/json',
+          'Content-Length': stat.size
+        }
+      )
+      fs.createReadStream(filePath).pipe(res)
+    }
+  })
+}
+
 function handleRequirements (route, res) {
   switch (route[0]) {
     case 'list': 
       res.writeHead(200, {'Content-Type': 'application/json'})
       res.write(JSON.stringify({reqList}))
       res.end()
-      break;
+      break
+    case 'byName':
+      handleRequirement (route, res); break
     default: handleHTML(res)
   }
 }

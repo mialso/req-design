@@ -30,7 +30,7 @@ Resource.prototype.changeHandler = function (err, data) {
 }
 Resource.prototype.watchChangeHandler = function (eventType, fileName) {
   if ('change' === eventType) {
-    this.readFunc(this.path, this.changeHandler.bind(this))
+    this.stringData = this.readFunc(this.path, this.changeHandler.bind(this))
   }
 }
 
