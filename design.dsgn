@@ -28,6 +28,43 @@ passive voice requirements
 use case:
   user-focused BASIC course ('sunny day')
   number of ALTERNATE courses ('rainy day')
+  ?What are the users of the system trying to do? What is the user experience?
+  gives:
+    reliable time estimations
+    effort
+  how:
+    describe system usage
+    put usage description in the context of the object model
+  rules:
+    two-paragraph rule
+    organize with actors and use case diagrams(group of use cases)
+      association from the actor to use case
+    write in active voice
+    write using event/response flow, describing both sides of the user/system dialouge
+      describe the steps involved
+      write both sides of dialogue
+    use GUI prototypes and screen mock-ups
+    remember that use case is really a runtime behaviour specification
+    write the use case in the context of the object model
+      boundary objects (instances)
+      classes
+    write using noun-verb-noun sentence structure
+      verbs are messages between objects. represents functions(controllers)
+      nouns are object instances
+    reference domain classes by name
+    reference boundary classes by name
+   basic = user action ? sustem action (response)
+  fundamental questions:
+    what happens? (sunny day scenario)
+    and then what happens?
+    what else might happen? (until all rainy-day scenarios you can think of are indentified)
+  package diagram
+  association: 
+    <<invokes>> && <<precedes>>
+    extends && includes
+      defines a set of extension points in parent use case
+      parent must know that it's going to be extended (in order to define the extension points)
+      adds to parent's functionality, not overrides
 
 Basic course:
   What happens? (and then what happens, and then what happens...)
