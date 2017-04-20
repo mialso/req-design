@@ -1,0 +1,12 @@
+{
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "Vue": true,
+    "Vuex": true
+  },
+  "rules": {
+    "no-param-reassign": "off"
+  }
+}

@@ -1,41 +1,42 @@
 #!/usr/bin/node
-'use strict'
 
-const fs = require('fs')
-const path = require('path')
+'use strict';
 
-const reqPathConf = './design/requirements/'
+const fs = require('fs');
+const path = require('path');
 
-const reqPath = path.resolve(process.cwd(), reqPathConf)
-console.log()
+const reqPathConf = './design/requirements/';
 
-const words = []
-let filtered = 0
+const reqPath = path.resolve(process.cwd(), reqPathConf);
+console.log();
+
+const words = [];
+let filtered = 0;
 
 fs.readdirSync(reqPath)
-  .filter((item) => { return !item.startsWith('.') })
+  .filter(item => !item.startsWith('.'))
   .forEach((fileName) => {
-    console.log(`reading ${fileName}...`)
+    console.log(`reading ${fileName}...`);
     fs.readFileSync(path.resolve(reqPath, fileName))
       .toString()
       .split('\n')
       .forEach((line) => {
-         line.split(' ').forEach((word) => {
-           if (-1 !== words.indexOf(word) || 3 > word.length) {
-             ++filtered
-             return
-           }
-           words.push(word)
-         })
-      })
-  })
+        line.split(' ').forEach((word) => {
+          if (words.indexOf(word) !== -1 || word.length < 3) {
+            filtered += 1;
+            return;
+          }
+          words.push(word);
+        });
+      });
+  });
 
 const wordsResult = words.map((word) => {
-  if (word.endsWith(',')) return word.slice(0, -1)
-  return word
-})
+  if (word.endsWith(',')) return word.slice(0, -1);
+  return word;
+});
 
 wordsResult.forEach((word, index) => {
-  console.log(`${index}: ${word}`)
-})
-console.log(`filtered: ${filtered}`)
+  console.log(`${index}: ${word}`);
+});
+console.log(`filtered: ${filtered}`);

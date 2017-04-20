@@ -1,4 +1,4 @@
-Vue.component('requirements', {
+Vue.component('requirementList', {
   template: `
     <div>
       <div v-for="fileName in fileNames">
@@ -6,6 +6,6 @@ Vue.component('requirements', {
       </div>
     </div>`,
   computed: {
-    fileNames() { return this.$store.state.reqList || [] }
-  }
-})
+    fileNames() { return this.$store.state.reqList || []; },
+  },
+});

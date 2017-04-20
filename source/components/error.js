@@ -4,6 +4,6 @@ Vue.component('error', {
       {{errorString}}
     </div>`,
   computed: {
-    errorString () { return this.$store.state.error }
+    errorString() { return this.$store.state.error; },
   },
-})
+});

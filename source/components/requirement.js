@@ -5,7 +5,7 @@ Vue.component('requirement', {
         <div>
           {{requirementName}}
         </div>
-        <button v-on:click="openRequirement">\></button>
+        <button v-on:click="openRequirement">></button>
       </div>
       <div v-if="requirementData">
         {{requirementData}}
@@ -15,16 +15,16 @@ Vue.component('requirement', {
     fileName: String,
   },
   computed: {
-    requirementName () {
-      return this.fileName//.split('.').slice(0,-1).join('.')
+    requirementName() {
+      return this.fileName;
     },
-    requirementData () {
-      return this.$store.getters.requirements(this.fileName)
+    requirementData() {
+      return this.$store.getters.requirements(this.fileName);
     },
   },
   methods: {
     openRequirement() {
-      this.$store.dispatch('getRequirement', this.fileName)
-    }
-  }
-})
+      this.$store.dispatch('getRequirement', this.fileName);
+    },
+  },
+});
