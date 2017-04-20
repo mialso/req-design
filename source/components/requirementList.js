@@ -1,8 +1,10 @@
 Vue.component('requirementList', {
   template: `
     <div>
-      <div v-for="fileName in fileNames">
-        <requirementFile :fileName="fileName"></requirementFile>
+      <div class="c-card u-high u-window-box--medium" v-for="fileName in fileNames">
+        <ul class="c-tree">
+          <requirementFile :fileName="fileName"></requirementFile>
+        </ul>
       </div>
     </div>`,
   computed: {
