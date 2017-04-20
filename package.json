@@ -6,7 +6,11 @@
   "scripts": {
     "lint": "eslint --rule 'no-console: [\"off\"]' \"scripts/**/*.js\" \"source/**/*.js\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-js": "npm run lint && cat ./source/lib.js ./source/components/*.js ./source/app.js > ./public/app.js"
+    "clean-up": "ls public > /dev/null 2>&1 || mkdir public",
+    "build-html": "cp source/html/index.html public/index.html",
+    "build-css": "cat source/css/*.css > public/app.css",
+    "build-js": "npm run lint && cat ./source/lib.js ./source/components/*.js ./source/app.js > ./public/app.js",
+    "build": "npm run clean-up && npm run build-html && npm run build-css && npm run build-js"
   },
   "repository": {
     "type": "git",

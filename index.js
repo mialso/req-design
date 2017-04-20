@@ -9,6 +9,7 @@ const
 
 const html = new Resource('public/index.html', '<div>no data availablet</div>')
 const js = new Resource('public/app.js')
+const css = new Resource('public/app.css')
 
 const reqList = fs.readdirSync(path.resolve('design/requirements/'))
 console.log(`reqList: ${reqList}`)
@@ -21,6 +22,7 @@ function handleHTML (res) {
 function handleResourceRequest (route, res) {
   switch(route[0]) {
     case 'app.js': res.end(js.stringData); break
+    case 'app.css': res.end(css.stringData); break
     default: handleHTML(res)
   }
 }

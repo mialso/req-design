@@ -2,7 +2,7 @@ Vue.component('requirementList', {
   template: `
     <div>
       <div v-for="fileName in fileNames">
-        <requirement :fileName="fileName"></requirement>
+        <requirementFile :fileName="fileName"></requirementFile>
       </div>
     </div>`,
   computed: {

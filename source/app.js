@@ -27,7 +27,7 @@
         console.log(`getter: ${name}`);
         if (!state.requirement[name]) return false;
         console.log(`getter: ${name}`);
-        return Object.keys(state.requirement[name]);
+        return state.requirement[name];
       },
     },
     actions: {
