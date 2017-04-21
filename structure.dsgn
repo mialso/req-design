@@ -1,0 +1,69 @@
+functional structure
+
+high-level
+app level
+model level
+organizm
+
+the app provides user with ability to
+  manage data/information model
+
+
+medium-level
+view level
+structure level
+  lists, compositions, sets, relationships
+molekul
+
+the page/view provides user with ability to
+  manage entity sets and compositions of related entities
+
+low-level
+entity level
+component level
+atom
+
+  to do smth user should
+    perform action -> entity(data) update -> component(view) update
+    [action] -> [change] -> [reaction]
+
+data model(structure)
+
+app model(structure)
+
+info model(structure)
+
+state model
+  current -> change -> next
+  change -> current + result -> next ~~~ git commit
+
+implementation requirements structure
+
+
+
+component
+module
+class
+organism
+  suite
+
+unit
+entity
+function
+molecul
+  test
+
+element
+field/property
+statement
+atom
+  assertion
+
+
+keywords:
+when === current data snapshot === view state
+who === user === entity === function call === object
+do === action === data change
+what === target === result === subject
+then === assertion === change
+task  [ repeat who+do+what ] = change

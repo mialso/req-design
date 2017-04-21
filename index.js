@@ -11,7 +11,7 @@ const html = new Resource('public/index.html', '<div>no data availablet</div>')
 const js = new Resource('public/app.js')
 const css = new Resource('public/app.css')
 
-const reqList = fs.readdirSync(path.resolve('design/requirements/'))
+const reqList = fs.readdirSync(path.resolve('design/requirements/')).filter(name => !name.startsWith('.') && name.endsWith('.json'))
 console.log(`reqList: ${reqList}`)
 console.log(`reqList JSON: ${JSON.stringify(reqList)}`)
 

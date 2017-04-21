@@ -2,13 +2,15 @@ Vue.component('requirementFile', {
   template: `
       <li
         class="c-tree__item" :class="[expanded ? expandedClass : expandableClass]"
-        v-on:click.stop="handleClick"
         >
-        <span class="c-link c-link--success">
+        <span
+          class="c-link c-link--success"
+          v-on:click.stop="handleClick"
+          >
           {{requirementFileName}}
         </span>
-        <ul class="c-tree" v-show="expanded && requirementData.length > 0" v-for="req in requirementData">
-          <requirement :reqName="req.name" :items="req.items"></requirement>
+        <ul class="c-tree" v-show="expanded && requirementTypes.length > 0" v-for="type in requirementTypes">
+          <requirementType :typePrefix="type.prefix"></requirementType>
         </ul>
       </li>`,
   props: {
@@ -26,10 +28,8 @@ Vue.component('requirementFile', {
     requirementFileName() {
       return this.fileName;
     },
-    requirementData() {
-      const reqData = this.$store.getters.requirements(this.fileName);
-      return Object.keys(reqData)
-        .map(key => ({ name: key, items: reqData[key] }));
+    requirementTypes() {
+      return this.$store.getters.requirementTypes(this.fileName);
     },
   },
   methods: {
@@ -38,7 +38,7 @@ Vue.component('requirementFile', {
       this.expanded = !this.expanded;
     },
     openRequirement() {
-      this.$store.dispatch('getRequirement', this.fileName);
+      this.$store.dispatch('getRequirementFile', this.fileName);
     },
   },
 });

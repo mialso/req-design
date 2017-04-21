@@ -1,13 +1,40 @@
 {
   "the app should supply user with ablitity to": [
-    "manage the list of requirement documents",
-    "view the hierarchy of documents by type and ?name?",
-    "view comments, opinions, discussion on each item",
-    "view relations between items",
-    "navigate between different views and manage & configure them",
-    "scale the view from atom to molecul and to organizm and back",
-    "drag and drop items to change relations",
-    "change item type",
-    "view changes history, discard changes"
+    { 
+      "text": "manage the list of requirement documents",
+      "relation":  [ "requirements" ]
+    },
+    { 
+      "text": "view the hierarchy of documents by type and ?name?",
+      "relation": []
+    },
+    {
+      "text": "view comments, opinions, discussion on each item",
+      "relation": []
+    },
+    {
+      "text": "view relations between items",
+      "relation": []
+    },
+    {
+      "text": "navigate between different views and manage & configure them",
+      "relation": []
+    },
+    {
+      "text": "scale the view from atom to molecul and to organizm and back",
+      "relation": []
+    },
+    {
+      "text": "drag and drop items to change relations",
+      "relation": []
+    },
+    { 
+      "text": "change item type",
+      "relation": []
+    },
+    { 
+      "text": "view changes history, discard changes",
+      "relation": []
+    }
   ]
 }

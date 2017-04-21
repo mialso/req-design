@@ -2,6 +2,16 @@
 ;(function (glob, Vue, Vuex) {
   'use strict';
 
+  function RequirementType(fileName, prefix) {
+    this.fileName = fileName;
+    this.prefix = prefix;
+  }
+  function Requirement(type, data) {
+    this.type = type;
+    this.text = data.text;
+    this.relation = data.relation;
+  }
+
   function callAPI(path) {
     const request = new Request(path, { method: 'GET' });
     return fetch(request)
@@ -10,34 +20,47 @@
   const store = new Vuex.Store({
     state: {
       reqList: [],
-      requirement: {},
+      requirements: [],
+      requirementTypes: [],
     },
     mutations: {
-      updateRequirement(state, dataObj) {
-        const reqItem = {};
-        reqItem[dataObj.name] = dataObj.data;
-        state.requirement = Object.assign({}, state.requirement, reqItem);
+      loadRequirementFile(state, dataObj) {
+        Object.keys(dataObj.data).forEach((key) => {
+          if (state.requirementTypes.filter(type => type.fileName === dataObj.name).length !== 0) {
+            return;
+          }
+          const type = new RequirementType(dataObj.name, key);
+          dataObj.data[key].forEach((item) => {
+            if (state.requirements.filter(rq => rq.text === item.text).length === 0) {
+              state.requirements.push(new Requirement(type, item));
+            }
+          });
+          state.requirementTypes.push(type);
+        });
       },
-      updateError(state, error) {
+      loadFileError(state, error) {
         state.error = error;
       },
     },
     getters: {
-      requirements: state => (name) => {
-        console.log(`getter: ${name}`);
-        if (!state.requirement[name]) return false;
-        console.log(`getter: ${name}`);
-        return state.requirement[name];
-      },
+      relatedRequirements: state => relation => (
+        state.requirements.filter(rq => rq.relation.indexOf(relation) !== -1)
+      ),
+      requirements: state => prefix => (
+        state.requirements.filter(rq => rq.type.prefix === prefix)
+      ),
+      requirementTypes: state => name => (
+        state.requirementTypes.filter(type => type.fileName === name)
+      ),
     },
     actions: {
-      getRequirement({ commit }, fileName) {
+      getRequirementFile({ commit }, fileName) {
         callAPI(`/requirements/byName/${fileName}`)
           .then((jsonData) => {
-            commit('updateRequirement', { name: fileName, data: jsonData });
+            commit('loadRequirementFile', { name: fileName, data: jsonData });
           })
           .catch((error) => {
-            commit('updateError', error);
+            commit('loadFileError', error);
           });
       },
     },

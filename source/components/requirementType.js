@@ -1,22 +1,20 @@
-Vue.component('requirement', {
+Vue.component('requirementType', {
   template: `
     <li 
       class="c-tree__item" :class="[expanded ? expandedClass : expandableClass]"
       >
       <span
-        class="c-link c-link--error"
+        class="c-link c-link--warning"
         v-on:click.stop="handleClick"
         >
-        {{item.text}}
+        {{typePrefix}}
       </span>
-      <ul class="c-tree" v-show="expanded && related.length > 0" v-for="req in related">
-        <li class="c-tree__item">
-          <span>{{req.text}}</span>
-        </li>
+      <ul class="c-tree" v-show="expanded && requirements.length > 0"  v-for="req in requirements">
+        <requirement :item="req"></requirement>
       </ul>
     </li>`,
   props: {
-    item: Object,
+    typePrefix: String,
   },
   // eslint-disable-next-line object-shorthand, func-names
   data: function () {
@@ -27,17 +25,8 @@ Vue.component('requirement', {
     };
   },
   computed: {
-    related() {
-      let result = [];
-      this.item.relation.forEach(relation => (
-        result = result.concat(this.$store.getters.relatedRequirements(relation))
-      ));
-      switch (this.item.type.fileName) {
-        case 'high-level.json':
-          return result.filter(rq => rq.type.fileName.startsWith('medium'));
-        default:
-          return [];
-      }
+    requirements() {
+      return this.$store.getters.requirements(this.typePrefix);
     },
   },
   methods: {
