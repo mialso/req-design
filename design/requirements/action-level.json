@@ -1,7 +1,7 @@
 {
   "user may": [
     {
-      "text": "click document to view requirements",
+      "text": "click document expand button to view requirements",
       "relation": ["document"]
     }
   ]

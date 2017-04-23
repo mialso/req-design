@@ -3,6 +3,10 @@
     {
       "text": "requirements",
       "relation": [ "requirement" ]
+    },
+    {
+      "text": "requirement types",
+      "relation": [ "requirementType" ]
     }
   ]
 }

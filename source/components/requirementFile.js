@@ -4,7 +4,7 @@ Vue.component('requirementFile', {
         <div class="c-card__item o-grid">
           <div class="o-grid__cell u-center-block">
             <span class="u-center-block__content u-center-block__content--vertical">
-              {{requirementFileName}}
+              {{fileName}}
             </span>
           </div>
           <div class="o-grid__cell o-grid__cell--width-30">
@@ -14,7 +14,7 @@ Vue.component('requirementFile', {
               v-on:click.stop="handleClick"
               type="button"
               >
-              show requirements
+              {{expandButtonText}}
             </button>
           </div>
         </div>
@@ -36,8 +36,8 @@ Vue.component('requirementFile', {
     };
   },
   computed: {
-    requirementFileName() {
-      return this.fileName;
+    expandButtonText() {
+      return this.expanded ? 'collapse' : 'expand';
     },
     requirementTypes() {
       return this.$store.getters.requirementTypes(this.fileName);
