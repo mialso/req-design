@@ -1,18 +1,29 @@
 Vue.component('requirementFile', {
   template: `
-      <li
-        class="c-tree__item" :class="[expanded ? expandedClass : expandableClass]"
-        >
-        <span
-          class="c-link c-link--success"
-          v-on:click.stop="handleClick"
-          >
-          {{requirementFileName}}
-        </span>
-        <ul class="c-tree" v-show="expanded && requirementTypes.length > 0" v-for="type in requirementTypes">
-          <requirementType :typePrefix="type.prefix"></requirementType>
-        </ul>
-      </li>`,
+      <div class="c-card u-high">
+        <div class="c-card__item o-grid">
+          <div class="o-grid__cell u-center-block">
+            <span class="u-center-block__content u-center-block__content--vertical">
+              {{requirementFileName}}
+            </span>
+          </div>
+          <div class="o-grid__cell o-grid__cell--width-30">
+            <button 
+              :class="[expanded ? expandedClass : expandableClass]"
+              class="c-button c-button--ghost-info u-small"
+              v-on:click.stop="handleClick"
+              type="button"
+              >
+              show requirements
+            </button>
+          </div>
+        </div>
+        <div v-show="expanded && requirementTypes.length > 0" class="c-card__item">
+          <ul class="c-tree" v-for="type in requirementTypes">
+            <requirementType :typePrefix="type.prefix"></requirementType>
+          </ul>
+        </div>
+      </div>`,
   props: {
     fileName: String,
   },
@@ -20,8 +31,8 @@ Vue.component('requirementFile', {
   data: function () {
     return {
       expanded: false,
-      expandedClass: 'c-tree__item--expanded',
-      expandableClass: 'c-tree__item--expandable',
+      expandedClass: 'c-button--active',
+      expandableClass: '',
     };
   },
   computed: {

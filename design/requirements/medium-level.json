@@ -1,16 +1,26 @@
 {
+  "documents view gives user ability to": [
+    {
+      "text": "view documents by name",
+      "relation": [ "document" ]
+    },
+    {
+      "text": "expand document requirements list",
+      "relation": [ "viewRequirements" ]
+    }
+  ],
   "requirements view gives user the ability to": [
     {
       "text": "view requirements list by type",
-      "relation": [ "requirements" ]
+      "relation": [ "requirement" ]
     },
     {
       "text": "expand requirements list to see related lower level requirements",
-      "relation": [ "requirements" ]
+      "relation": [ "requirement" ]
     },
     {
       "text": "comment each requirement",
-      "relation": [ "requirements" ]
+      "relation": [ "requirement" ]
     }
   ]
 }

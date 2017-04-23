@@ -7,9 +7,9 @@
     this.prefix = prefix;
   }
   function Requirement(type, data) {
-    this.type = type;
-    this.text = data.text;
-    this.relation = data.relation;
+    this.type = type || new RequirementType('error', 'error');
+    this.text = data.text || '';
+    this.relation = data.relation || [];
   }
 
   function callAPI(path) {
@@ -26,7 +26,7 @@
     mutations: {
       loadRequirementFile(state, dataObj) {
         Object.keys(dataObj.data).forEach((key) => {
-          if (state.requirementTypes.filter(type => type.fileName === dataObj.name).length !== 0) {
+          if (state.requirementTypes.filter(type => type.prefix === key).length !== 0) {
             return;
           }
           const type = new RequirementType(dataObj.name, key);
@@ -70,7 +70,7 @@
   new Vue({
     el: '#app',
     template: `
-      <div>
+      <div class="u-window-box--medium">
         <requirementList></requirementList>
         <error></error>
       </div>`,

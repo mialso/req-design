@@ -1,11 +1,11 @@
 Vue.component('requirementList', {
   template: `
     <div>
-      <div class="c-card u-high u-window-box--medium" v-for="fileName in fileNames">
-        <ul class="c-tree">
-          <requirementFile :fileName="fileName"></requirementFile>
-        </ul>
-      </div>
+      <requirementFile
+        v-for="fileName in fileNames" :key="fileName"
+        :fileName="fileName"
+        >
+      </requirementFile>
     </div>`,
   computed: {
     fileNames() { return this.$store.state.reqList || []; },

@@ -1,12 +1,12 @@
 {
-  "the app should supply user with ablitity to": [
+  "the user should be able to": [
     { 
-      "text": "manage the list of requirement documents",
-      "relation":  [ "requirements" ]
+      "text": "view the list of requirement documents",
+      "relation":  ["document" ]
     },
     { 
-      "text": "view the hierarchy of documents by type and ?name?",
-      "relation": []
+      "text": "view the hierarchy of requirements by type and relation",
+      "relation": ["requirement"]
     },
     {
       "text": "view comments, opinions, discussion on each item",

@@ -10,7 +10,8 @@ Vue.component('requirementType', {
         {{typePrefix}}
       </span>
       <ul class="c-tree" v-show="expanded && requirements.length > 0"  v-for="req in requirements">
-        <requirement :item="req"></requirement>
+        <requirement v-if="req.relation.length === 0" :item="req"></requirement>
+        <requirementExpandable v-if="req.relation.length > 0" :item="req"></requirementExpandable>
       </ul>
     </li>`,
   props: {
