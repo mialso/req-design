@@ -9,8 +9,9 @@
     "clean-up": "ls public > /dev/null 2>&1 || mkdir public",
     "build-html": "cp source/html/index.html public/index.html",
     "build-css": "cat source/css/*.css > public/app.css",
-    "build-js": "npm run lint && cat ./source/lib.js ./source/components/*.js ./source/app.js > ./public/app.js",
-    "build": "npm run clean-up && npm run build-html && npm run build-css && npm run build-js"
+    "build-js": "npm run lint && cat ./source/lib.js ./source/components/*.js ./source/components/**/*.js ./source/app.js > ./public/app.js",
+    "build": "npm run clean-up && npm run build-html && npm run build-css && npm run build-js",
+    "start": "node index.js &"
   },
   "repository": {
     "type": "git",

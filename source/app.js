@@ -2,6 +2,8 @@
 ;(function (glob, Vue, Vuex) {
   'use strict';
 
+  let store = {};
+
   function RequirementType(fileName, prefix) {
     this.fileName = fileName;
     this.prefix = prefix;
@@ -15,13 +17,15 @@
   function callAPI(path) {
     const request = new Request(path, { method: 'GET' });
     return fetch(request)
-      .then(response => response.json());
+      .then(response => response.json())
+      .catch(error => store.commit('loadFileError', error));
   }
-  const store = new Vuex.Store({
+  store = new Vuex.Store({
     state: {
       reqList: [],
       requirements: [],
       requirementTypes: [],
+      errors: [],
     },
     mutations: {
       loadRequirementFile(state, dataObj) {
@@ -39,7 +43,10 @@
         });
       },
       loadFileError(state, error) {
-        state.error = error;
+        state.errors.push(error);
+      },
+      cleanError(state, message) {
+        state.errors = state.errors.filter(error => error.message !== message);
       },
     },
     getters: {
@@ -51,6 +58,17 @@
       ),
       requirementTypes: state => name => (
         state.requirementTypes.filter(type => type.fileName === name)
+      ),
+      errorsArray: state => (
+        state.errors.reduce((acc, error) => {
+          const stateAccumulated = acc.find(item => item.message === error.message);
+          if (stateAccumulated) {
+            stateAccumulated.count += 1;
+          } else {
+            acc.push({ count: 0, message: error.message });
+          }
+          return acc;
+        }, [])
       ),
     },
     actions: {
@@ -72,7 +90,7 @@
     template: `
       <div class="u-window-box--medium">
         <requirementList></requirementList>
-        <error></error>
+        <errorNotifier></errorNotifier>
       </div>`,
     store,
   });

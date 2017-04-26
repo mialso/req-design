@@ -1,26 +1,32 @@
 {
+  "main menu gives user ability to": [
+    {
+      "text": "switch between different views",
+      "relation": ["mainMenu"]
+    }
+  ],
   "documents view gives user ability to": [
     {
       "text": "view documents by name",
-      "relation": [ "document" ]
+      "relation": ["document"]
     },
     {
       "text": "expand document requirements list",
-      "relation": [ "viewRequirements" ]
+      "relation": ["document", "viewRequirements"]
     }
   ],
   "requirements view gives user the ability to": [
     {
       "text": "view requirements list by type",
-      "relation": [ "requirement" ]
+      "relation": ["requirement"]
     },
     {
       "text": "expand requirements list to see related lower level requirements",
-      "relation": [ "requirement" ]
+      "relation": ["requirement"]
     },
     {
       "text": "comment each requirement",
-      "relation": [ "requirement" ]
+      "relation": ["requirement"]
     }
   ]
 }

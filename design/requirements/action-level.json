@@ -1,8 +1,12 @@
 {
-  "user may": [
+  "user may click": [
     {
-      "text": "click document expand button to view requirements",
-      "relation": ["document"]
+      "text": "document expand button to view requirements",
+      "relation": ["document", "documentView"]
+    },
+    {
+      "text": "document collapse button to hide requirements",
+      "relation": ["document", "documentView"]
     }
   ]
 }
