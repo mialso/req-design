@@ -1,16 +1,44 @@
 {
   "document should contain": [
     {
+      "text": "requirement_documents",
+      "isA": ["array", "component"],
+      "hasA": ["requirement_document"]
+    },
+    {
       "text": "requirements",
-      "relation": [ "requirement" ]
+      "isA": ["array", "component"],
+      "hasA": ["requirement"]
     },
     {
-      "text": "requirement types",
-      "relation": [ "requirementType" ]
+      "text": "requirement_types",
+      "isA": ["array", "component"],
+      "hasA": ["requirement_type"]
     },
     {
-      "text": "requirement file",
-      "relation": ["requirementFile"]
+      "text": "requirement_document",
+      "isA": ["file"],
+      "hasA": ["name"]
+    },
+    {
+      "text": "requirement_type",
+      "isA": ["String"],
+      "hasA": []
+    },
+    {
+      "text": "requirement",
+      "isA": ["String"],
+      "hasA": []
+    },
+    {
+      "text": "name",
+      "isA": ["String"],
+      "hasA": []
+    },
+    {
+      "text": "String",
+      "isA": ["basic"],
+      "hasA": []
     }
   ]
 }

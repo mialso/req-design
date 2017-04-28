@@ -8,6 +8,6 @@ Vue.component('requirementList', {
       </requirementFile>
     </div>`,
   computed: {
-    fileNames() { return this.$store.state.reqList || []; },
+    fileNames() { return this.$store.state.requirement.reqList || []; },
   },
 });

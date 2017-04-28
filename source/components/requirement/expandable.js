@@ -9,7 +9,11 @@ Vue.component('requirementExpandable', {
         >
         {{item.text}}
       </span>
-      <ul class="c-tree" v-show="expanded && related.length > 0" v-for="req in related">
+      <ul
+        class="c-tree"
+        v-show="expanded && related.length > 0"
+        v-for="req in related"
+        :key="req.text">
         <li class="c-tree__item">
           <span>{{req.text}}</span>
         </li>

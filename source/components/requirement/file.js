@@ -19,7 +19,7 @@ Vue.component('requirementFile', {
           </div>
         </div>
         <div v-show="expanded && requirementTypes.length > 0" class="c-card__item">
-          <ul class="c-tree" v-for="type in requirementTypes">
+          <ul class="c-tree" v-for="type in requirementTypes" :key="type.prefix">
             <requirementType :typePrefix="type.prefix"></requirementType>
           </ul>
         </div>
