@@ -1,12 +1,11 @@
-Vue.component('model_view', {
+Vue.component('modelView', {
   template: `
-    <div>
-      <model_level v-for="item in items" items="item"></model_level>
+    <div class="model-view">
+      <model_level v-for="item in modelItems" :items="item"></model_level>
     </div>`,
-  props: {
-    levels: {
-      type: Array,
-      default: [],
+  computed: {
+    modelItems() {
+      return [];
     },
   },
 });

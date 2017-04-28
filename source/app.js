@@ -6,9 +6,18 @@
   new Vue({
     el: '#app',
     template: `
-      <div class="u-window-box--medium">
-        <requirementList></requirementList>
-        <errorNotifier></errorNotifier>
+      <div>
+        <topMenu></topMenu>
+        <div class="o-grid o-panel o-panel--nav-top">
+          <div class="o-grid__cell--width-15 o-panel-container">
+            <leftMenu></leftMenu>
+          </div>
+          <div class="o-grid__cell o-panel-container">
+            <div class="o-panel u-window-box--medium">
+              <mainContent></mainContent>
+            </div>
+          </div>
+        </div>
       </div>`,
     store: glob.reqAppStore,
   });
