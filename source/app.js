@@ -18,6 +18,7 @@
             </div>
           </div>
         </div>
+        <errorNotifier></errorNotifier>
       </div>`,
     store: glob.reqAppStore,
   });

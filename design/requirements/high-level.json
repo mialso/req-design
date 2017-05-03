@@ -2,15 +2,15 @@
   "the user should be able to": [
     {
       "text": "manage different application views and appearance",
-      "relation": []
+      "relation": ["view"]
     },
     { 
       "text": "view the list of requirement documents",
-      "relation":  ["document" ]
+      "relation":  ["document", "view", "requirement"]
     },
     {
       "text": "see error messages if error occures",
-      "relation": ["error"]
+      "relation": ["error", "message"]
     },
     { 
       "text": "view the hierarchy of requirements by type and relation",

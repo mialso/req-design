@@ -1,44 +1,90 @@
 {
-  "document should contain": [
+  "requirements folder should contain": [
     {
       "text": "requirement_documents",
-      "isA": ["array", "component"],
+      "relation": ["requirement"],
+      "isA": ["Array", "component"],
       "hasA": ["requirement_document"]
     },
     {
-      "text": "requirements",
-      "isA": ["array", "component"],
-      "hasA": ["requirement"]
-    },
+      "text": "requirement_document",
+      "relation": ["requirement"],
+      "isA": ["file", "component"],
+      "hasA": ["requirement_type", "name", "path"]
+    }
+  ],
+  "requirements document should contain": [
     {
       "text": "requirement_types",
-      "isA": ["array", "component"],
+      "relation": ["requirement"],
+      "isA": ["Array", "component"],
       "hasA": ["requirement_type"]
     },
     {
-      "text": "requirement_document",
-      "isA": ["file"],
-      "hasA": ["name"]
-    },
-    {
       "text": "requirement_type",
-      "isA": ["String"],
-      "hasA": []
+      "relation": ["requirement"],
+      "isA": ["component"],
+      "hasA": ["name", "requirements"]
+    }
+  ],
+  "requirement type should contain": [
+    {
+      "text": "requirements",
+      "relation": ["requirement"],
+      "isA": ["Array", "component"],
+      "hasA": ["requirement"]
     },
     {
       "text": "requirement",
+      "relation": ["requirement"],
+      "isA": ["String", "component"],
+      "hasA": ["text", "relation", "isA", "hasA"]
+    }
+  ],
+  "requirement should contain": [
+    {
+      "text": "text",
+      "relation": ["requirement"],
+      "isA": ["String", "component"],
+      "hasA": []
+    },
+    {
+      "text": "relation",
+      "relation": ["requirement"],
       "isA": ["String"],
       "hasA": []
     },
     {
+      "text": "isA",
+      "relation": ["requirement"],
+      "isA": ["Array"],
+      "hasA": []
+    },
+    {
+      "text": "hasA",
+      "relation": ["requirement"],
+      "isA": ["Array"],
+      "hasA": []
+    }
+  ],
+  "app should contain": [
+    {
       "text": "name",
-      "isA": ["String"],
+      "relation": ["app"],
+      "isA": ["String", "basic"],
       "hasA": []
     },
     {
       "text": "String",
+      "relation": ["app"],
       "isA": ["basic"],
       "hasA": []
+    },
+    {
+      "text": "Array",
+      "relation": ["app"],
+      "isA": ["basic"],
+      "hasA": ["item"]
     }
   ]
 }
