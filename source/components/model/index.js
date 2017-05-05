@@ -1,21 +1,33 @@
 Vue.component('modelView', {
   template: `
-    <div class="model-view o-grid">
-      <div
-        class="o-grid__cell u-center-block"
-        v-for="relation in relations"
-        :key="relation"
-      >
-        <span class="c-badge u-center-block__content" v-on:click="showRelation(relation)">{{relation}}</span>
+    <div class="model-view">
+      <div class="o-grid u-letter-box--medium">
+        <div
+          class="o-grid__cell u-center-block"
+          v-for="relation in relations" :key="relation"
+        >
+          <span
+            class="c-badge u-center-block__content"
+            v-bind:class="[relation !== currentRelation ? 'c-badge--ghost' : '']"
+            v-on:click="showRelation(relation)"
+          >
+            {{relation}}
+          </span>
+        </div>
       </div>
-      <model_level v-for="item in modelItems" :key="item.name" :items="item"></model_level>
+      <modelList v-if="modelItems.length > 0" :models="modelItems"></modelList>
     </div>`,
   beforeCreate() {
     this.$store.dispatch('getModelData');
   },
+  data() {
+    return {
+      currentRelation: 'app',
+    };
+  },
   computed: {
     modelItems() {
-      return [];
+      return this.$store.getters.relatedModels(this.currentRelation);
     },
     relations() {
       return this.$store.state.model.relations;
@@ -23,7 +35,7 @@ Vue.component('modelView', {
   },
   methods: {
     showRelation(name) {
-      console.log(`showRelation: ${name}`);
+      this.currentRelation = name;
     },
   },
 });

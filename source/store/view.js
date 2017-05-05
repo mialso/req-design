@@ -6,7 +6,7 @@
   const store = {};
 
   store.state = {
-    current: 'requirementList',
+    current: 'modelView',
   };
   store.mutations = {
     setCurrentView(state, name) {

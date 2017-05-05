@@ -20,7 +20,7 @@
   }
 
   store.state = {
-    models: [],
+    items: [],
     names: [],
     relations: [],
   };
@@ -32,10 +32,10 @@
           const model = new Model(modelData);
           const currentModelIndex = state.names.indexOf(model.name);
           if (currentModelIndex === -1) {
-            state.models.push(model);
-            state.names[state.models.length - 1] = model.name;
+            state.items.push(model);
+            state.names[state.items.length - 1] = model.name;
           } else {
-            state.models[currentModelIndex] = model;
+            state.items[currentModelIndex] = model;
             state.names[currentModelIndex] = model.name;
           }
           // update relations
@@ -55,6 +55,15 @@
         .catch((error) => {
           commit('loadFileError', error);
         });
+    },
+  };
+  store.getters = {
+    relatedModels: state => relation => (
+      state.items.filter(item => item.relation === relation)
+    ),
+    modelChildren: state => (modelName) => {
+      const model = state.items.find(item => item.name === modelName);
+      return state.items.filter(item => model.hasA.indexOf(item.name) !== -1);
     },
   };
 
