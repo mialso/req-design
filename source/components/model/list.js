@@ -13,13 +13,28 @@ Vue.component('modelList', {
             {{model.name}}
           </span>
         </div>
+        <div
+          v-if="missedModels.length > 0"
+          class="o-grid__cell"
+          v-for="name in missedModels" :key="name"
+        >
+          <span
+            class="c-badge c-badge--error"
+          >
+            {{name}}
+          </span>
+        </div>
       </div>
-      <modelList v-if="children.length > 0" :models="children"></modelList>
+      <modelList v-if="children.length > 0" :models="children" :missedModels="missedNames"></modelList>
     </div>`,
   props: {
     models: {
       type: Array,
       default: [],
+    },
+    missedModels: {
+      type: Array,
+      default: () => [],
     },
   },
   data() {
@@ -31,6 +46,11 @@ Vue.component('modelList', {
     children() {
       return this.currentModelName
         ? this.$store.getters.modelChildren(this.currentModelName)
+        : [];
+    },
+    missedNames() {
+      return this.currentModelName
+        ? this.$store.getters.missedNames(this.currentModelName)
         : [];
     },
   },

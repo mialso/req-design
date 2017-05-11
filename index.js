@@ -16,13 +16,22 @@ console.log(`reqList: ${reqList}`)
 console.log(`reqList JSON: ${JSON.stringify(reqList)}`)
 
 function handleHTML (res) {
-  res.end(html.stringData)
+  res.setHeader('Content-Type', 'text/html');
+  res.end(html.stringData);
 }
 
 function handleResourceRequest (route, res) {
   switch(route[0]) {
-    case 'app.js': res.end(js.stringData); break
-    case 'app.css': res.end(css.stringData); break
+    case 'app.js': {
+      res.setHeader('Content-Type', 'application/javascript');
+      res.end(js.stringData);
+      break;
+    }
+    case 'app.css': {
+      res.setHeader('Content-Type', 'text/css');
+      res.end(css.stringData);
+      break;
+    }
     default: handleHTML(res)
   }
 }

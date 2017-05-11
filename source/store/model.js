@@ -65,6 +65,13 @@
       const model = state.items.find(item => item.name === modelName);
       return state.items.filter(item => model.hasA.indexOf(item.name) !== -1);
     },
+    missedNames: state => (modelName) => {
+      const model = state.items.find(item => item.name === modelName);
+      const foundItems = state.items.filter(item => model.hasA.indexOf(item.name) !== -1);
+      const notFound = model.hasA.filter(
+        name => !(foundItems.find(mod => mod.name === name) instanceof Model));
+      return notFound;
+    },
   };
 
   if (glob.reqAppStore) {
