@@ -1,41 +1,40 @@
 Vue.component('modelView', {
   template: `
-    <div class="model-view">
-      <div class="o-grid u-letter-box--medium">
+    <div class="model-view c-tabs">
+      <div class="c-tabs__headings">
         <div
-          class="o-grid__cell u-center-block"
-          v-for="relation in relations" :key="relation"
+          class="c-tab-heading"
+          v-bind:class="[currentView === 'modelHtmlView' ? 'c-tab-heading--active' : '']"
+          v-on:click="changeView('modelHtmlView')"
         >
-          <span
-            class="c-badge u-center-block__content"
-            v-bind:class="[relation !== currentRelation ? 'c-badge--ghost' : '']"
-            v-on:click="showRelation(relation)"
-          >
-            {{relation}}
-          </span>
+          html view
+        </div>
+        <div
+          class="c-tab-heading"
+          v-bind:class="[currentView === 'modelCanvasView' ? 'c-tab-heading--active' : '']"
+          v-on:click="changeView('modelCanvasView')"
+        >
+          canvas view
         </div>
       </div>
-      <modelList v-if="modelItems.length > 0" :models="modelItems"></modelList>
+      <div class="c-tabs__tab c-tabs__tab--active">
+        <dynamicView view="model"></dynamicView>
+      </div>
     </div>`,
   beforeCreate() {
     this.$store.dispatch('getModelData');
   },
   data() {
-    return {
-      currentRelation: 'app',
-    };
+    return {};
   },
   computed: {
-    modelItems() {
-      return this.$store.getters.relatedModels(this.currentRelation);
-    },
-    relations() {
-      return this.$store.state.model.relations;
+    currentView() {
+      return this.$store.getters.currentModelView;
     },
   },
   methods: {
-    showRelation(name) {
-      this.currentRelation = name;
+    changeView(name) {
+      this.$store.commit('setModelView', name);
     },
   },
 });

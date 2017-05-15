@@ -14,7 +14,7 @@
           </div>
           <div class="o-grid__cell o-panel-container">
             <div class="o-panel u-window-box--medium">
-              <mainContent></mainContent>
+              <dynamicView view="main"></dynamicView>
             </div>
           </div>
         </div>

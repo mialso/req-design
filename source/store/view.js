@@ -6,12 +6,20 @@
   const store = {};
 
   store.state = {
-    current: 'modelView',
+    main: 'modelView',
+    model: 'modelHtmlView',
   };
   store.mutations = {
-    setCurrentView(state, name) {
-      state.current = name;
+    setMainView(state, name) {
+      state.main = name;
     },
+    setModelView(state, name) {
+      state.model = name;
+    },
+  };
+  store.getters = {
+    currentModelView: state => state.model,
+    currentMainView: state => state.main,
   };
 
   if (glob.reqAppStore) {
