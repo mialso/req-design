@@ -11,8 +11,17 @@
     });
     delete glob.reqAppStoresRegister;
   }
+  const pluginsToAdd = [];
+  if (glob.reqAppStorePluginRegister) {
+    Object.keys(glob.reqAppStorePluginRegister).forEach((key) => {
+      console.log(`plugin to add: ${key}`);
+      pluginsToAdd.push(glob.reqAppStorePluginRegister[key]);
+    });
+    delete glob.reqAppStorePluginRegister;
+  }
   const store = {
     modules: {},
+    plugins: pluginsToAdd,
   };
   modulesToAdd.forEach((moduleWrapper) => {
     store.modules[moduleWrapper.name] = moduleWrapper.module;

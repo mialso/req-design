@@ -8,6 +8,7 @@
   store.state = {
     main: 'modelView',
     model: 'modelHtmlView',
+    canvas: null,
   };
   store.mutations = {
     setMainView(state, name) {
@@ -15,6 +16,9 @@
     },
     setModelView(state, name) {
       state.model = name;
+    },
+    setModelCanvasElement(state, data) {
+      state.canvas = data;
     },
   };
   store.getters = {

@@ -1,6 +1,6 @@
 Vue.component('modelView', {
   template: `
-    <div class="model-view c-tabs">
+    <div class="model-view c-tabs" style="height: 100%; display: flex; flex-direction: column;">
       <div class="c-tabs__headings">
         <div
           class="c-tab-heading"
@@ -17,7 +17,7 @@ Vue.component('modelView', {
           canvas view
         </div>
       </div>
-      <div class="c-tabs__tab c-tabs__tab--active">
+      <div class="c-tabs__tab c-tabs__tab--active" style="flex: 1;">
         <dynamicView view="model"></dynamicView>
       </div>
     </div>`,
