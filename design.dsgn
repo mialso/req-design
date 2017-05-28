@@ -114,7 +114,19 @@ requrements:
     high level {talking about classes, UI comonents, MOLECUL}
 
 domain model
-  domain object
+  [purpose]:
+* defines the scope and forms the foundation on which to build use cases.
+* provides a common vocabulary to enable clear communication between members of a project team.
+* forms the foundation of the static part of model
+* describes structure
+
+  [what is it]:
+* glossary
+* live dictionary of terms
+* shows graphically terms relations
+* simplified class diagram
+
+  domain object aka class
   relation
     aggregation {is-a, typeof}
     generalization {has-a, belongs-to}

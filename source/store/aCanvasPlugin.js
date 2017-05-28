@@ -27,7 +27,6 @@
 
   function renderSmth(canvasData) {
     const stage = new canvasLib.DisplayObject();
-    console.log(`renderSmth(): canvas w: ${canvasData.width}, h: ${canvasData.height}`);
     stage.height = canvasData.height;
     stage.width = canvasData.width;
     models.forEach((model) => {
@@ -52,12 +51,6 @@
       accAngle += model.angle;
       model.sprite.x = Math.cos(accAngle - addAngle) * radius;
       model.sprite.y = Math.sin(accAngle - addAngle) * radius;
-      console.log(`
-        ${model.text}:
-        a: ${accAngle}
-        x: ${model.sprite.x}
-        y: ${model.sprite.y}
-      `);
       stage.putCenter(model.sprite, { xOffset: model.sprite.x, yOffset: model.sprite.y });
     });
     const canvasWidth = canvasData.width;
@@ -71,8 +64,6 @@
   function canvasPlugin(store) {
     store.subscribe((mutation, state) => {
       if (mutation.type === 'setModelCanvasElement') {
-        console.log('mutation: %o', mutation);
-        console.log('state: %o', state.model);
         totalLength = 0;
         models = state.model.items.map(item => item.name);
         renderSmth(mutation.payload);

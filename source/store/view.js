@@ -2,6 +2,17 @@
 ;(function (glob) {
   'use strict';
 
+  const menus = [
+    {
+      id: 'requirementList',
+      text: 'Requirements',
+    },
+    {
+      id: 'modelView',
+      text: 'Models',
+    },
+  ];
+
   const storeName = 'view';
   const store = {};
 
@@ -22,6 +33,7 @@
     },
   };
   store.getters = {
+    mainViews: () => menus,
     currentModelView: state => state.model,
     currentMainView: state => state.main,
   };
