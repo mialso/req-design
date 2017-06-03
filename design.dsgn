@@ -130,4 +130,6 @@ domain model
   relation
     aggregation {is-a, typeof}
     generalization {has-a, belongs-to}
+    affordance {can-do}
+    ??? {uses-a}
   static part of model {use case is dynamic part of model}
