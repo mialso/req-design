@@ -20,6 +20,7 @@
     main: 'modelView',
     model: 'modelHtmlView',
     canvas: null,
+    inlineMenu: { text: '', top: 0, left: 0 },
   };
   store.mutations = {
     setMainView(state, name) {
@@ -31,11 +32,20 @@
     setModelCanvasElement(state, data) {
       state.canvas = data;
     },
+    openInlineMenu(state, data) {
+      state.inlineMenu.text = data.text;
+      state.inlineMenu.top = data.top;
+      state.inlineMenu.left = data.left;
+    },
+    closeInlineMenu(state) {
+      state.inlineMenu.text = '';
+    },
   };
   store.getters = {
     mainViews: () => menus,
     currentModelView: state => state.model,
     currentMainView: state => state.main,
+    inlineMenu: state => state.inlineMenu,
   };
 
   if (glob.reqAppStore) {

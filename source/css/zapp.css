@@ -4,3 +4,9 @@
 .model-view .c-badge:hover {
   cursor: pointer;
 }
+.inline-menu {
+  position: fixed;
+}
+.inline-menu .c-button--close:hover {
+  color: red;
+}

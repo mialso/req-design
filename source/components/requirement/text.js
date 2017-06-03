@@ -1,9 +1,7 @@
 Vue.component('requirement', {
   template: `
     <li class="c-tree__item">
-      <span>
-        {{item.text}}
-      </span>
+      <requirementText :text="item.text"></requirementText>
     </li>`,
   props: {
     item: Object,

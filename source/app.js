@@ -19,8 +19,14 @@
           </div>
         </div>
         <errorNotifier></errorNotifier>
+        <inlineMenu v-if="inlineMenuText"></inlineMenu>
       </div>`,
     store: glob.reqAppStore,
+    computed: {
+      inlineMenuText() {
+        return this.$store.getters.inlineMenu.text;
+      },
+    },
   });
   delete glob.reqAppStore;
 }(self, Vue));
