@@ -20,7 +20,7 @@
     main: 'modelView',
     model: 'modelHtmlView',
     canvas: null,
-    inlineMenu: { text: '', top: 0, left: 0 },
+    inlineMenu: { text: '', top: 0, left: 0, handler: null, autoclose: false },
   };
   store.mutations = {
     setMainView(state, name) {
@@ -36,9 +36,11 @@
       state.inlineMenu.text = data.text;
       state.inlineMenu.top = data.top;
       state.inlineMenu.left = data.left;
+      state.inlineMenu.autoclose = data.autoclose || false;
+      state.inlineMenu.handler = data.handler;
     },
     closeInlineMenu(state) {
-      state.inlineMenu.text = '';
+      state.inlineMenu = { text: '', top: 0, left: 0, handler: null };
     },
   };
   store.getters = {

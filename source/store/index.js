@@ -3,13 +3,13 @@
   'use strict';
 
   const modulesToAdd = [];
-  if (glob.reqAppStoresRegister) {
-    Object.keys(glob.reqAppStoresRegister).forEach((key) => {
-      const moduleWrapper = { name: key, module: glob.reqAppStoresRegister[key] };
+  if (glob.reqAppStoreRegister) {
+    Object.keys(glob.reqAppStoreRegister).forEach((key) => {
+      const moduleWrapper = { name: key, module: glob.reqAppStoreRegister[key] };
       console.log(`module to add: ${key}`);
       modulesToAdd.push(moduleWrapper);
     });
-    delete glob.reqAppStoresRegister;
+    delete glob.reqAppStoreRegister;
   }
   const pluginsToAdd = [];
   if (glob.reqAppStorePluginRegister) {

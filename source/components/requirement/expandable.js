@@ -22,8 +22,7 @@ Vue.component('requirementExpandable', {
   props: {
     item: Object,
   },
-  // eslint-disable-next-line object-shorthand, func-names
-  data: function () {
+  data() {
     return {
       expanded: false,
       expandedClass: 'c-tree__item--expanded',

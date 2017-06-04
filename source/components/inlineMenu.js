@@ -2,11 +2,11 @@ Vue.component('inlineMenu', {
   template: `
     <div
       class="inline-menu"
-      v-bind:style="{top: top + 'px', left: left + 'px'}"
+      v-bind:style="{top: menu.top + 'px', left: menu.left + 'px'}"
       >
       <div class="c-alert" style="padding-right: 4em;">
         <button class="c-button c-button--close" style="right: 1.5em;"
-          v-on:click="add"
+          v-on:click="submit"
           >
           &#x2611;
         </button>
@@ -15,26 +15,21 @@ Vue.component('inlineMenu', {
           >
           &#x2612;
         </button>
-        {{text}}
+        {{menu.text}}
       </div>
     </div>`,
   computed: {
-    text() {
-      return this.$store.getters.inlineMenu.text;
-    },
-    top() {
-      return this.$store.getters.inlineMenu.top;
-    },
-    left() {
-      return this.$store.getters.inlineMenu.left;
+    menu() {
+      return this.$store.getters.inlineMenu;
     },
   },
   methods: {
-    close() {
+    submit() {
+      this.menu.handler();
       this.$store.commit('closeInlineMenu');
     },
-    add() {
-      console.log('add: <%s>', this.text);
+    close() {
+      this.$store.commit('closeInlineMenu');
     },
   },
 });

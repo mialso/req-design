@@ -20,7 +20,7 @@ function handleHTML (res) {
   res.end(html.stringData);
 }
 
-function handleResourceRequest (route, res) {
+function handleResourceRequest (route, req, res) {
   switch(route[0]) {
     case 'app.js': {
       res.setHeader('Content-Type', 'application/javascript');
@@ -36,14 +36,29 @@ function handleResourceRequest (route, res) {
   }
 }
 
-function handleAPIRequest (route, res) {
+function handleAPIRequest (route, req, res) {
+  console.info('handleAPIRequest: %s', route[0]);
   switch (route[0]) {
     case 'requirements': handleRequirements(route.slice(1), res); break
+    case 'domainModel': handleDomainModel(route.slice(1), res); break
     default: handleHTML(res)
   }
 }
 
-function handleRequirement (route, res) {
+function handleDomainModel(route, req, res) {
+  console.log('handleDomainModel: %s');
+  switch (route[0]) {
+    case 'all': handleDomainModelAll(req, res); break
+    default: handleHTML(res)
+  }
+}
+
+function handleDomainModelAll(req, res) {
+  console.log('handleDomainModelAll: %s');
+  // TODO
+}
+
+function handleRequirement (route, req, res) {
   const filePath = path.resolve('design/requirements', route[1])
   fs.stat(filePath, function (err, stat) {
     if (err) {
@@ -63,7 +78,7 @@ function handleRequirement (route, res) {
   })
 }
 
-function handleRequirements (route, res) {
+function handleRequirements (route, req, res) {
   switch (route[0]) {
     case 'list': 
       res.writeHead(200, {'Content-Type': 'application/json'})
@@ -80,11 +95,10 @@ function handleRequest (req, res) {
   console.log(`handleRequest: ${req.url}`)
   const route = req.url.split('/').slice(1)
   if (2 > route.length) {
-    handleResourceRequest(route, res)
+    handleResourceRequest(route, req, res)
   } else {
-    handleAPIRequest(route, res)
+    handleAPIRequest(route, req, res)
   }
-
 }
 
 const server = http.createServer(handleRequest)

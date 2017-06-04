@@ -5,8 +5,8 @@
   const storeName = 'model';
   const store = {};
 
-  function callAPI(path) {
-    const request = new Request(path, { method: 'GET' });
+  function callAPI(path, method) {
+    const request = new glob.Request(path, { method });
     return fetch(request)
       .then(response => response.json())
       .catch(error => store.commit('loadFileError', error));
@@ -29,18 +29,22 @@
       Object.keys(data).forEach((key) => {
         // load models
         data[key].forEach((modelData) => {
-          const model = new Model(modelData);
-          const currentModelIndex = state.names.indexOf(model.name);
+          const newModel = new Model(modelData);
+          const currentModelIndex = state.names.indexOf(newModel.name);
           if (currentModelIndex === -1) {
-            state.items.push(model);
-            state.names[state.items.length - 1] = model.name;
+            state.items = state.items.concat([newModel]);
+            state.names = state.names.concat([newModel.name]);
           } else {
-            state.items[currentModelIndex] = model;
-            state.names[currentModelIndex] = model.name;
+            state.items = state.items
+              .filter(model => newModel.name !== model.name)
+              .concat(newModel);
+            state.names = state.items
+              .filter(modelName => newModel.name !== modelName)
+              .concat(newModel.name);
           }
           // update relations
-          if (state.relations.indexOf(model.relation) === -1) {
-            state.relations.push(model.relation);
+          if (state.relations.indexOf(newModel.relation) === -1) {
+            state.relations = state.relations.concat([newModel.relation]);
           }
         });
       });
@@ -48,7 +52,7 @@
   };
   store.actions = {
     getModelData({ commit }) {
-      callAPI('/requirements/byName/model-level.json')
+      callAPI('/requirements/byName/model-level.json', 'GET')
         .then((jsonData) => {
           commit('loadModels', jsonData);
         })

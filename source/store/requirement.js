@@ -40,14 +40,14 @@
         const type = new RequirementType(dataObj.name, key);
         dataObj.data[key].forEach((item) => {
           if (state.requirements.filter(rq => rq.text === item.text).length === 0) {
-            state.requirements.push(new Requirement(type, item));
+            state.requirements = state.requirements.concat([new Requirement(type, item)]);
           }
         });
-        state.requirementTypes.push(type);
+        state.requirementTypes = state.requirementTypes.concat([type]);
       });
     },
     loadFileError(state, error) {
-      state.errors.push(error);
+      state.errors = state.errors.concat([error]);
     },
     cleanError(state, message) {
       state.errors = state.errors.filter(error => error.message !== message);
